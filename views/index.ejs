@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Liste des utilisateurs</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Liste des utilisateurs</h1>
+    <table border="1"><tr><th>id</th><th>login</th><th>password</th><th>action</th></tr>
+    <% for (var i = 0; i < users.length ; i++) { %>
+      <form style="display: inline;" action="/modify" method="post">
+      <tr>
+        <td><%= users[i].id %></td>
+        <td><input type="text" name="name" value="<%= users[i].name %>"></td>
+        <td><input type="text" name="pw" value="<%= users[i].pw %>"></td>
+        <td><button type="submit">modifier</button>
+            <a  href="/delete/<%= users[i].id %>">supprimer</a>
+        </td>
+      </tr>
+    </form>
+      <% } %>
+    </table>
+    <br>
+    <a href="/utilisateur/add_utilisateur"><button>Ajouter</button></a>
   </body>
 </html>
