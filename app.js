@@ -41,12 +41,14 @@ app.post("/add",function(req,res){
 
 //modify user function
 app.post("/modify",function(req,res){
+  var id=req.body.id;
   var name=req.body.name;
   var pw=req.body.pw;
-  console.log(req.body)
+  console.log(req.body);
   users.forEach(function(user) {
+    if(user.id==id){
     user.name=name;
-    user.pw=pw;
+    user.pw=pw;}
   });
   res.redirect("/utilisateurs");
 });
