@@ -2,26 +2,54 @@
 <html>
   <head>
     <title>Liste des utilisateurs</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <link rel="stylesheet" href="/css/mdb.min.css" />
   </head>
+
+
   <body>
-    <h1>Liste des utilisateurs</h1>
-    <table border="1"><tr><th>id</th><th>login</th><th>password</th><th>action</th></tr>
+    <button type="button" class="btn btn-dark btn-rounded float-right" data-toggle="popover" title="CRUD with ExpressJS" data-content="a simple use of CRUD with ExpressJS">?</button>
+    <h1 class="font-weight-bolder">Liste des utilisateurs<span class="badge bg-danger badge-dot"></span></h1>
+
+    <table border="1" class="table table-striped table-hover"><tr><th>ID</th><th>Nom d'utilisateur</th><th>mot de passe</th><th>Options</th></tr>
     <% for (var i = 0; i < users.length ; i++) { %>
       <form style="display: inline;" action="/modify" method="post">
       <tr>
         <td><%= users[i].id %></td>
         <td><input type="text" name="name" value="<%= users[i].name %>"></td>
         <td><input type="text" name="pw" value="<%= users[i].pw %>"></td>
-        <td><button type="submit">modifier</button>
-            <a  href="/delete/<%= users[i].id %>">supprimer</a>
+        <td><button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> modifier </button>
+            <a  href="/delete/<%= users[i].id %>"><button type="button" class="btn btn-danger"><i class="fas fa-times" aria-hidden="true"></i> &nbsp; supprimer</button></a>
         </td>
       </tr>
     </form>
       <% } %>
     </table>
     <br>
-    <a href="/utilisateur/add_utilisateur"><button>Ajouter</button></a>
+    <a href="/utilisateur/add_utilisateur"><button class="btn btn-success"><i class="fas fa-plus"></i> &nbsp; Ajouter</button></a>
+
+
+    <br><br>
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>As a remarque!</strong> I'm using <strong>MDB</strong> for this awesome interface ♥
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+
   </body>
+
+  <!-- MDB -->
+  <script type="text/javascript" src="/js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript">
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+          return new mdb.Popover(popoverTriggerEl)
+        })
+  </script>
 </html>

@@ -32,7 +32,10 @@ app.get("/utilisateurs",function(req,res){
 
 //add user function
 app.post("/add",function(req,res){
-  users.push({id:req.body.id,name:req.body.name,pw:req.body.pw});
+  var id=req.body.id;
+  var name=req.body.name;
+  var pw=req.body.pw;
+  users.push({id:id,name:name,pw:pw});
   res.redirect("/utilisateurs");
 });
 
@@ -43,7 +46,7 @@ app.post("/modify",function(req,res){
   console.log(req.body)
   users.forEach(function(user) {
     user.name=name;
-    user.pw=pw;    
+    user.pw=pw;
   });
   res.redirect("/utilisateurs");
 });

@@ -3,20 +3,42 @@
   <head>
     <title>Liste des utilisateurs</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <link rel="stylesheet" href="/css/mdb.min.css" />
   </head>
   <body>
-    <h1>Liste des utilisateurs</h1>
+    <h1 class="font-weight-bolder">Ajout d'un nouveau utilisateur</h1>
     <form action="/add" method="post">
-        <label for="id">id</label>
-        <input type="text" name="id" id="id">
-        <label for="name">login</label>
-        <input type="text" name="name" id="name">
-        <label for="pw">password</label>
-        <input type="text" name="pw" id="pw">
-        <button type="submit">Ajouter</button>
-    </form>
-    
-  </body>
-  
-</html>
 
+        <div class="form-outline d-inline-block">
+          <input type="text" name="id" id="id" class="form-control" required />
+          <label class="form-label" for="id">ID</label>
+        </div>
+        <div class="form-outline d-inline-block">
+          <input type="text" name="name" id="name" class="form-control" />
+          <label class="form-label" for="name">Nom d'utilisateur</label>
+        </div>
+        <div class="form-outline d-inline-block">
+          <input type="text" name="pw" id="pw" class="form-control" />
+          <label class="form-label" for="pw">Mot de passe</label>
+        </div>
+<br><br>
+        <button type="submit" class="btn btn-outline-success" ><i class="fas fa-check"></i>&nbsp; Ajouter</button>
+    </form>
+
+    <br><br>
+
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">As a remarque!</h4>
+      <hr>
+      <p>An ID is never changed so be careful</p>
+    </div>
+
+  </body>
+
+  <!-- MDB -->
+  <script type="text/javascript" src="/js/mdb.min.js"></script>
+
+</html>
